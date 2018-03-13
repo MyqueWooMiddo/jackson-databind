@@ -579,6 +579,40 @@ public abstract class DeserializationContext
         throw UnrecognizedPropertyException.from(_parser,
                 instanceOrClass, fieldName, propIds);
     }
+
+    /*
+    /**********************************************************
+    /* Methods for problem reporting, in cases where recovery
+    /* is not considered possible: POJO definition problems
+    /**********************************************************
+     */
+
+    /**
+     * Helper method called to indicate problem in POJO (serialization) definitions or settings
+     * regarding specific Java type, unrelated to actual JSON content to map.
+     * Default behavior is to construct and throw a {@link JsonMappingException}.
+     */
+    public <T> T reportBadTypeDefinition(BeanDescription bean,
+            String msg, Object... msgArgs) throws JsonMappingException {
+        if (msgArgs.length > 0) {
+            msg = String.format(msg, msgArgs);
+        }
+        Class<?> named = bean.getBeanClass();
+        String beanDesc;
+        if (named == null) {
+            beanDesc = "[null]";
+        } else {
+            beanDesc = named.getName();
+            if (beanDesc == null) {
+                beanDesc = "[null]";
+            } else {
+                beanDesc = new StringBuilder(beanDesc.length()+2).append('`').append(beanDesc).append('`').toString();
+            }
+        }
+        msg = String.format("Invalid type definition for type %s: %s",
+                            beanDesc, msg);
+        throw JsonMappingException.from(_parser, msg);
+    }
     
     /*
     /**********************************************************
