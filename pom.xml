@@ -10,7 +10,8 @@
 
   <groupId>com.fasterxml.jackson.core</groupId>
   <artifactId>jackson-databind</artifactId>
-  <version>2.6.3</version>
+  <version>2.6.3-cloudera.1</version>
+
   <name>jackson-databind</name>
   <packaging>bundle</packaging>
   <description>General data-binding functionality for Jackson: works on core streaming API</description>
@@ -18,10 +19,10 @@
   <inceptionYear>2008</inceptionYear>
 
   <scm>
-    <connection>scm:git:git@github.com:FasterXML/jackson-databind.git</connection>
-    <developerConnection>scm:git:git@github.com:FasterXML/jackson-databind.git</developerConnection>
-    <url>http://github.com/FasterXML/jackson-databind</url>
-    <tag>jackson-databind-2.6.3</tag>
+    <connection>scm:git:git@github.com:yoderme/jackson-databind.git</connection>
+    <developerConnection>scm:git:git@github.com:yoderme/jackson-databind.git</developerConnection>
+    <url>http://github.com/yoderme/jackson-databind</url>
+    <tag>jackson-databind-2.6.3-cloudera.1</tag>
   </scm>
 
   <properties>
