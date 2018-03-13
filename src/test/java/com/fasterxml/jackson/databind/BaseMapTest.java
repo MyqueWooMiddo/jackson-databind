@@ -128,7 +128,7 @@ public abstract class BaseMapTest
     protected ObjectMapper objectMapper() {
         return SHARED_MAPPER;
     }
-    
+
     protected ObjectWriter objectWriter() {
         return SHARED_MAPPER.writer();
     }
@@ -245,5 +245,9 @@ public abstract class BaseMapTest
 
     protected static String aposToQuotes(String json) {
         return json.replace("'", "\"");
+    }
+
+    protected static String quotesToApos(String json) {
+        return json.replace("\"", "'");
     }
 }
